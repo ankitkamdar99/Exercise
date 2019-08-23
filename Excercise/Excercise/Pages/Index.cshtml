@@ -1,0 +1,27 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model NumberToWordModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <form method="post">
+        <label asp-for="Number" class="control-label"></label>
+        <input asp-for="Number" class="form-control" />
+        <br />
+        <span asp-validation-for="Number" class="text-danger"></span>
+        <br />
+        @if (!string.IsNullOrEmpty(Model.Error))
+        {
+            <label style="color:red;font-weight:bold;">@Model.Error</label>
+            <br />
+        }
+        @if (!string.IsNullOrEmpty(Model.Words))
+            {
+                <label>@Model.Words</label>
+                <br />
+            }
+            <input type="submit" />
+
+        </form>
